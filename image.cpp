@@ -499,9 +499,7 @@ static int create3DArrayNoClear(lua_State *L) {
 static int createCubemap(lua_State *L) {
 	int64_t w = luaL_checkinteger(L, 1);
 	int64_t h = luaL_checkinteger(L, 2);
-	int64_t s = luaL_checkinteger(L, 3);
-	int64_t d = luaL_checkinteger(L, 4);
-	char const* fmt = luaL_checkstring(L, 5);
+	char const* fmt = luaL_checkstring(L, 3);
 
 	auto ud = imageud_create(L);
 	*ud = Image_CreateCubemap((uint32_t)w, (uint32_t)h, ImageFormat_FromName(fmt));
@@ -511,7 +509,7 @@ static int createCubemap(lua_State *L) {
 static int createCubemapNoClear(lua_State *L) {
 	int64_t w = luaL_checkinteger(L, 1);
 	int64_t h = luaL_checkinteger(L, 2);
-	char const* fmt = luaL_checkstring(L, 5);
+	char const* fmt = luaL_checkstring(L, 3);
 
 	auto ud = imageud_create(L);
 	*ud = Image_CreateCubemapNoClear((uint32_t)w, (uint32_t)h, ImageFormat_FromName(fmt));
@@ -522,7 +520,7 @@ static int createCubemapArray(lua_State *L) {
 	int64_t w = luaL_checkinteger(L, 1);
 	int64_t h = luaL_checkinteger(L, 2);
 	int64_t s = luaL_checkinteger(L, 3);
-	char const* fmt = luaL_checkstring(L, 5);
+	char const* fmt = luaL_checkstring(L, 4);
 
 	auto ud = imageud_create(L);
 	*ud = Image_CreateCubemapArray((uint32_t)w, (uint32_t)h, (uint32_t)s, ImageFormat_FromName(fmt));
@@ -533,7 +531,7 @@ static int createCubemapArrayNoClear(lua_State *L) {
 	int64_t w = luaL_checkinteger(L, 1);
 	int64_t h = luaL_checkinteger(L, 2);
 	int64_t s = luaL_checkinteger(L, 3);
-	char const* fmt = luaL_checkstring(L, 5);
+	char const* fmt = luaL_checkstring(L, 4);
 
 	auto ud = imageud_create(L);
 	*ud = Image_CreateCubemapArrayNoClear((uint32_t)w, (uint32_t)h, (uint32_t)s, ImageFormat_FromName(fmt));
