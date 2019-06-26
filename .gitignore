@@ -32,7 +32,6 @@
 *.app
 
 # Project exclude paths
-/cmake-build-debug/
 /out_libs/al2o3_cadt_LICENSE
 /out_libs/al2o3_catch2_LICENSE
 /out_libs/al2o3_cmath_LICENSE
