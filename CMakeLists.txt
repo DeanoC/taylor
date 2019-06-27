@@ -15,9 +15,6 @@ project(${ProjectName})
 set(Src
 		main.cpp
 		image.cpp
-
-		ezoptionparser.cpp
-		ezoptionparser.hpp
 		lua-5.3.5/src/lapi.c
 		lua-5.3.5/src/lapi.h
 		lua-5.3.5/src/lauxlib.c

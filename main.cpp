@@ -1,7 +1,6 @@
 #include "al2o3_platform/platform.h"
 #include "utils_simple_logmanager/logmanager.h"
 #include "utils_misccpp/compiletimehash.hpp"
-#include "ezoptionparser.hpp"
 #include "al2o3_vfile/vfile.hpp"
 #include "lua-5.3.5/src/lua.hpp"
 
@@ -31,10 +30,8 @@ static void openStdLibs (lua_State *L) {
 
 extern int luaopen_Image(lua_State *luaS);
 
-void Usage(ez::OptionParser &opt) {
-	tinystl::string usage;
-	opt.getUsage(usage);
-	LOGINFOF("%s", usage.c_str());
+void Usage() {
+	LOGINFO("taylor script - process script to convert assets");
 };
 
 void *LuaAllocFunc(void *ud, void *ptr, size_t osize, size_t nsize) {
@@ -77,63 +74,28 @@ char const *LuaReaderFunc(lua_State *L, void *ud, size_t *sz) {
 int main(int argc, char const *argv[]) {
 	auto logger = SimpleLogManager_Alloc();
 
-	int ret = 0;
-	ez::OptionParser opt;
-
-	opt.overview = "Taylor. Takes a lua script and runs various operations like image conversion";
-	opt.syntax = "taylor script [OPTIONS]";
-	opt.example = "tayler script.lua\n\n";
-	opt.footer = "taylor 0.0.1  Copyright (C) 2019 Deano Calver\nThis program is free and without warranty.\n";
-
-	opt.parse(argc, argv);
-
-	if (opt.isSet("-h")) {
-		ret = 1;
-	}
-
-	if (ret == 0 && opt.lastArgs.size() < 1) {
-		LOGINFO("ERROR: Expected at least 1 arguments.\n\n");
-		ret = 1;
-	}
-
-	tinystl::vector<tinystl::string> badOptions;
-	if (ret == 0 && !opt.gotRequired(badOptions)) {
-		for (int i = 0; i < badOptions.size(); ++i) {
-			LOGINFOF("ERROR: Missing required option %s. \n\n", badOptions[i].c_str());
-		}
-		ret = 1;
-	}
-
-	if (ret == 0 && !opt.gotExpected(badOptions)) {
-		for (int i = 0; i < badOptions.size(); ++i) {
-			LOGINFOF("ERROR: Got unexpected number of arguments for option  %s. \n\n", badOptions[i].c_str());
-		}
-		ret = 1;
-	}
-
 	// -- lets get our lua on
-
 	lua_State *luaS = lua_newstate(&LuaAllocFunc, nullptr);
 	openStdLibs(luaS); // standard libs
 	registerLib(luaS, "image", &luaopen_Image);
-
-	if (ret == 0 && opt.lastArgs.size() > 0) {
-		tinystl::string scriptFileName = *opt.lastArgs[0];
+	int ret = 0;
+	if(argc != 2) { ret = 1; }
+	else {
+		tinystl::string scriptFileName = argv[1];
 
 		VFile::ScopedFile scriptFile = VFile::File::FromFile(scriptFileName, Os_FileMode::Os_FM_Read);
 		if (!scriptFile) {
 			LOGINFOF("%s can't be opened", scriptFileName.c_str());
 		} else {
-			if( lua_load(luaS, &LuaReaderFunc, scriptFile.owned, scriptFileName.c_str(), nullptr) ||
-					lua_pcall(luaS, 0,0,0) ) {
-				LOGERRORF("Lua script loading error %s", lua_tostring(luaS,-1));
+			if (lua_load(luaS, &LuaReaderFunc, scriptFile.owned, scriptFileName.c_str(), nullptr) ||
+					lua_pcall(luaS, 0, 0, 0)) {
+				LOGERRORF("Lua script loading error %s", lua_tostring(luaS, -1));
 			};
-
 		}
 	}
 
 	if (ret != 0) {
-		Usage(opt);
+		Usage();
 	}
 
 	lua_close(luaS);

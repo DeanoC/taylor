@@ -64,3 +64,6 @@
 /out_bin/test_setpixel.png
 /out_libs/utils_misccpp_LICENSE
 /out_libs/utils_simple_logmanager_LICENSE
+
+# Project exclude paths
+/cmake-build-debug/
