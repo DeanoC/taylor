@@ -41,7 +41,7 @@ do
     test:saveAsKTX("test_save.ktx")
 end
 
-do
+--[[do
     local test = image.load("test_save2.ktx")
     if test == nil then
         print("test_save2.ktx unable to be loaded")
@@ -49,7 +49,7 @@ do
     test:saveAsPNG("test_save2a.png")
     test:saveAsKTX("test_save2a.ktx")
 end
-
+--]]
 do
     local test = image.create(884, 406, 1, 1, "R8G8B8A8_UNORM")
     if test == nil then
