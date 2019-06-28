@@ -1,5 +1,4 @@
 #include "al2o3_platform/platform.h"
-#include "utils_simple_logmanager/logmanager.h"
 #include "utils_misccpp/compiletimehash.hpp"
 #include "al2o3_vfile/vfile.hpp"
 #include "gfx_imageio/io.h"
