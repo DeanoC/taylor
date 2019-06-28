@@ -38,6 +38,16 @@ do
     test:saveAsBMP("test_save.bmp")
     test:saveAsPNG("test_save.png")
     test:saveAsJPG("test_save.jpg")
+    test:saveAsKTX("test_save.ktx")
+end
+
+do
+    local test = image.load("test_save2.ktx")
+    if test == nil then
+        print("test_save2.ktx unable to be loaded")
+    end
+    test:saveAsPNG("test_save2a.png")
+    test:saveAsKTX("test_save2a.ktx")
 end
 
 do

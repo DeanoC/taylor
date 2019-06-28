@@ -616,6 +616,18 @@ static int saveJPG(lua_State * L) {
 	return 0;
 }
 
+static int saveKTX(lua_State * L) {
+	void* ud = luaL_checkudata(L, 1, MetaName);
+	char const* filename = luaL_checkstring(L, 2);
+	VFile::ScopedFile file = VFile::File::FromFile(filename, Os_FM_WriteBinary);
+	if(!file) {
+		return 0;
+	}
+	auto image = *(Image_ImageHeader const**)ud;
+	Image_SaveKTX(image, file);
+
+	return 0;
+}
 
 static int saveHDR(lua_State * L) {
 	void* ud = luaL_checkudata(L, 1, MetaName);
@@ -685,6 +697,7 @@ int luaopen_Image(lua_State* L) {
 			{"saveAsPNG", &savePNG},
 			{"saveAsJPG", &saveJPG},
 			{"saveAsHDR", &saveHDR},
+			{"saveAsKTX", &saveKTX},
 			// currently broken			{"saveAsDDS", &saveDDS},
 			{"__gc", &imageud_gc },
 			{nullptr, nullptr}  /* sentinel */
