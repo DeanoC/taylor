@@ -4,7 +4,7 @@
 #include "gfx_imageio/io.h"
 #include "gfx_image/create.h"
 #include "gfx_image/utils.h"
-#include "lua-5.3.5/src/lua.hpp"
+#include "lua_base5.3/lua.hpp"
 
 static char const MetaName[] = "Al2o3.Image";
 
