@@ -14,8 +14,6 @@ project(${ProjectName})
 
 set(Src
 		main.cpp
-		image.cpp
-
 		)
 set(Deps
 		al2o3_platform
@@ -23,15 +21,16 @@ set(Deps
 		al2o3_os
 		al2o3_cmath
 		al2o3_tinystl
-		gfx_image_interface
-		gfx_image_impl_basic
-		gfx_imageio
 		al2o3_vfile
 		data_binify
 		data_bufferutils
 		data_binnybundle
 		data_binnybundlewriter
+		gfx_image_interface
+		gfx_image_impl_basic
+		gfx_imageio
 		lua_base5.3
+		lua_image
 		utils_simple_logmanager
 		utils_misccpp
 		)

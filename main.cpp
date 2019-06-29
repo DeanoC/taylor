@@ -4,8 +4,8 @@
 #include "al2o3_vfile/vfile.hpp"
 #include "lua_base5.3/lua.hpp"
 #include "lua_base5.3/utils.h"
+#include "lua_image/image.h"
 
-extern int luaopen_Image(lua_State *luaS);
 
 void Usage() {
 	LOGINFO("taylor script - process script to convert assets");
@@ -17,7 +17,7 @@ int main(int argc, char const *argv[]) {
 
 	lua_State* L = LuaBase_Create();
 
-	LuaBase_RegisterLib(L, "image", &luaopen_Image);
+	LuaBase_RegisterLib(L, "image", &LuaImage_Open);
 	int ret = 0;
 	if(argc != 2) { ret = 1; }
 	else {
