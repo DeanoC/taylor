@@ -249,7 +249,7 @@ static int copySlice(lua_State *L) {
 	auto dst = *(Image_ImageHeader const**)luaL_checkudata(L, 3, MetaName);
 	int64_t dw = luaL_checkinteger(L, 4);
 
-	Image_CopySlice(src, sw, dst, dw);
+	Image_CopySlice(src, (uint32_t)sw, dst, (uint32_t)dw);
 	return 0;
 }
 
@@ -261,7 +261,7 @@ static int copyPage(lua_State *L) {
 	int64_t dz = luaL_checkinteger(L, 5);
 	int64_t dw = luaL_checkinteger(L, 6);
 
-	Image_CopyPage(src, sz, sw, dst, dz, dw);
+	Image_CopyPage(src, (uint32_t)sz, (uint32_t)sw, dst, (uint32_t)dz, (uint32_t)dw);
 	return 0;
 }
 
@@ -275,7 +275,7 @@ static int copyRow(lua_State *L) {
 	int64_t dz = luaL_checkinteger(L, 7);
 	int64_t dw = luaL_checkinteger(L, 8);
 
-	Image_CopyRow(src, sy, sz, sw, dst, dy, dz, dw);
+	Image_CopyRow(src, (uint32_t)sy, (uint32_t)sz, (uint32_t)sw, dst, (uint32_t)dy, (uint32_t)dz, (uint32_t)dw);
 	return 0;
 }
 
@@ -291,7 +291,7 @@ static int copyPixel(lua_State *L) {
 	int64_t dz = luaL_checkinteger(L, 9);
 	int64_t dw = luaL_checkinteger(L, 10);
 
-	Image_CopyPixel(src, sx, sy, sz, sw, dst, dx, dy, dz, dw);
+	Image_CopyPixel(src, (uint32_t)sx, (uint32_t)sy, (uint32_t)sz, (uint32_t)sw, dst, (uint32_t)dx, (uint32_t)dy, (uint32_t)dz, (uint32_t)dw);
 	return 0;
 }
 
