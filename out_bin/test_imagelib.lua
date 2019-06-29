@@ -42,12 +42,35 @@ do
 end
 
 do
-    local test = image.load("test_save2.ktx")
+    local test = image.create2D(16, 16, "R8G8B8A8_UNORM")
     if test == nil then
-        print("test_save2.ktx unable to be loaded")
+        print("create2D fail")
     end
-    test:saveAsPNG("test_save2a.png")
-    test:saveAsKTX("test_save2a.ktx")
+    for y = 1, 16 do
+        for x = 1, 16 do
+            local i = (y-1) * 16 + (x-1)
+            test:setPixelAt(i, (x-1.0)/15.0, (y-1.0)/15.0, (x-1.0)/15.0, 1.0)
+        end
+    end
+    test:saveAsKTX("test_save_col_16x16.ktx")
+end
+
+do
+    local test = image.load("test_pvt_col_mm_16x16.ktx")
+    if test == nil then
+        print("load test_pvt_col_mm_16x16.ktx fail")
+    end
+    test:saveAsKTX("test_save_col_mm_16x16.ktx")
+end
+
+do
+    local test = image.load("test_pvtr8g8b8a8mm.ktx")
+    if test == nil then
+        print("test_pvtr8g8b8a8mm.ktx unable to be loaded")
+    end
+
+    test:saveAsPNG("test_save_pvtr8g8b8a8mm.png")
+    test:saveAsKTX("test_save_pvtr8g8b8a8mm.ktx")
 end
 
 do
