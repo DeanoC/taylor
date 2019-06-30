@@ -30,6 +30,7 @@ set(Deps
 		gfx_image_impl_basic
 		gfx_imageio
 		lua_base5.3
+		lua_al2o3_os
 		lua_image
 		utils_simple_logmanager
 		utils_misccpp
