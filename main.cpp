@@ -5,6 +5,7 @@
 #include "lua_base5.3/lua.hpp"
 #include "lua_base5.3/utils.h"
 #include "lua_image/image.h"
+#include "lua_al2o3_os/os.h"
 
 
 void Usage() {
@@ -18,6 +19,8 @@ int main(int argc, char const *argv[]) {
 	lua_State* L = LuaBase_Create();
 
 	LuaBase_RegisterLib(L, "image", &LuaImage_Open);
+	LuaBase_RegisterLib(L, "al2o3.os", &LuaOs_Open);
+
 	int ret = 0;
 	if(argc != 2) { ret = 1; }
 	else {
@@ -29,7 +32,12 @@ int main(int argc, char const *argv[]) {
 		if (!scriptFile) {
 			LOGINFOF("%s can't be opened", scriptFileName.c_str());
 		} else {
-			LuaBase_ExecuteScript(L, scriptFile);
+			try {
+				LuaBase_ExecuteScript(L, scriptFile);
+			} catch( ... ) {
+				LOGINFOF("%s has crashed", scriptFileName.c_str());
+				ret = 10;
+			}
 		}
 	}
 
