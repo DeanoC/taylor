@@ -1,3 +1,5 @@
+-- example won't work
+-- http://github/com/DeanoC/taylor-imagetests has a working image testing data/script
 local image = require "image"
 do
     local test = image.load("test_imageload.png")
