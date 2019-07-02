@@ -53,17 +53,10 @@
 /out_libs/gfx_image_LICENSE
 /out_libs/gfx_imageformat_LICENSE
 /out_libs/gfx_imageio_LICENSE
-/out_bin/log.log
-/out_bin/taylor
-/out_bin/test_createsave.png
-/out_bin/test_createsave1.png
-/out_bin/test_save.bmp
-/out_bin/test_save.jpg
-/out_bin/test_save.png
-/out_bin/test_save.tga
-/out_bin/test_setpixel.png
 /out_libs/utils_misccpp_LICENSE
 /out_libs/utils_simple_logmanager_LICENSE
+/out_bin/log.log
+/out_bin/taylor
 
 # Project exclude paths
 /cmake-build-debug/
