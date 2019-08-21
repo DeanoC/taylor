@@ -25,6 +25,8 @@
     <mapping directory="$PROJECT_DIR$/fetchdeps/fmt-src" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fetchdeps/gfx_image_impl_basic-src" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fetchdeps/gfx_image_interface-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/fetchdeps/gfx_imagecompress-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/fetchdeps/gfx_imagedecompress-src" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fetchdeps/gfx_imageformat-src" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fetchdeps/gfx_imageio-src" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fetchdeps/lua_al2o3_os-src" vcs="Git" />

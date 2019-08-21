@@ -29,6 +29,7 @@ set(Deps
 		gfx_image_interface
 		gfx_image_impl_basic
 		gfx_imageio
+		gfx_imagecompress
 		lua_base5.3
 		lua_al2o3_os
 		lua_image
