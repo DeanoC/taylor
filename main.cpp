@@ -30,12 +30,12 @@ int main(int argc, char const *argv[]) {
 		VFile::ScopedFile scriptFile = VFile::File::FromFile(scriptFileName, Os_FileMode::Os_FM_Read);
 
 		if (!scriptFile) {
-			LOGINFOF("%s can't be opened", scriptFileName.c_str());
+			LOGINFO("%s can't be opened", scriptFileName.c_str());
 		} else {
 			try {
 				LuaBase_ExecuteScript(L, scriptFile);
 			} catch( ... ) {
-				LOGINFOF("%s has crashed", scriptFileName.c_str());
+				LOGINFO("%s has crashed", scriptFileName.c_str());
 				ret = 10;
 			}
 		}
